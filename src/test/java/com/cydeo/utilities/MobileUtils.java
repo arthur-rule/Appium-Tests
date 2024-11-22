@@ -1,6 +1,8 @@
 package com.cydeo.utilities;
 
 public class MobileUtils {
+
+
     public static void wait(int seconds){
         try {
             Thread.sleep(seconds*1000);
@@ -8,4 +10,6 @@ public class MobileUtils {
             throw new RuntimeException(e);
         }
     }
+
+
 }

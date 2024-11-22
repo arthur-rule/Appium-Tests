@@ -2,6 +2,7 @@ package com.cydeo.utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigurationReader {
@@ -13,27 +14,17 @@ public class ConfigurationReader {
     private static final Properties properties = new Properties();
 
     static{
-
-        try {
-            //2- Open file using FileInputStream (open file)
-            FileInputStream file = new FileInputStream("configuration.properties");
-            //3- Load the "properties" object with "file" (load properties)
-            properties.load(file);
-
-            //close the file in the memory
-            file.close();
-
+        try (InputStream inputStream = new FileInputStream("configuration.properties")) {
+            properties = new Properties();
+            properties.load(inputStream);
         } catch (IOException e) {
-            System.out.println("FILE NOT FOUND WITH GIVEN PATH!!!");
             e.printStackTrace();
+            throw new RuntimeException("Failed to load properties file!");
         }
     }
 
-    //create a utility method to use the object to read
-    //4- Use "properties" object to read from the file (read properties)
-
-    public static String getProperty(String keyword){
-        return properties.getProperty(keyword);
+    public static String getProperty(String property) {
+        return properties.getProperty(property);
     }
 
 }
