@@ -14,7 +14,7 @@ public class CloudLoginPage {
     public WebElement userLoginBox;
 
     @FindBy (id = "password")
-    public WebElement passwordBox;
+    public WebElement userPasswordBox;
 
     @FindBy (id = "submit-form")
     public WebElement loginButton;

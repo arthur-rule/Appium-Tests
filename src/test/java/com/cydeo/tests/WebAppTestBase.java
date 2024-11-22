@@ -19,7 +19,7 @@ public class WebAppTestBase {
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.withBrowserName(MobileBrowserType.CHROME);
-        options.setChromedriverExecutable("/home/ertugrul/IdeaProjects/Appium-Tests/chromedriver");
+        //options.setChromedriverExecutable("/home/ertugrul/IdeaProjects/Appium-Tests/chromedriver");
         URL url;
 
         try {
