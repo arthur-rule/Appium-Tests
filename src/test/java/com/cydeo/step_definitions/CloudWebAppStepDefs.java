@@ -5,8 +5,6 @@ import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import com.cydeo.utilities.MobileUtils;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import io.appium.java_client.remote.MobileBrowserType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,16 +20,15 @@ public class CloudWebAppStepDefs {
     String password= ConfigurationReader.getProperty("cloudPassword");
     @When("User navigates to web application of Cloud on a Mobile Device")
     public void userNavigatesToWebApplicationOfCloudOnAMobileDevice() {
-        page=new CloudLoginPage();
-        driver = Driver.getDriver("webPlatform");
-        driver.get(url);
-
+            page = new CloudLoginPage();
+            driver = Driver.getDriver("webPlatform");
+            driver.get(url);
     }
 
     @And("User logins with valid credentials")
     public void userLoginsWithValidCredentials() {
-        page.userLoginBox.sendKeys(username);
-        page.passwordBox.sendKeys(password);
+        page.userLoginBox.sendKeys(userName);
+        page.userPasswordBox.sendKeys(password);
         page.loginButton.click();
         MobileUtils.wait(3);
     }
@@ -39,6 +36,5 @@ public class CloudWebAppStepDefs {
     @Then("User verifies successful login action")
     public void userVerifiesSuccessfulLoginAction() {
         Assertions.assertTrue(page.menuItems.isDisplayed());
-        Driver.closeDriver();
     }
 }
