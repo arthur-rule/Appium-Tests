@@ -16,23 +16,24 @@ public class WebAppTestBase {
 
     @BeforeEach
     public void setUpWebTest(){
-
         UiAutomator2Options options = new UiAutomator2Options();
         options.withBrowserName(MobileBrowserType.CHROME);
-        //options.setChromedriverExecutable("/home/ertugrul/IdeaProjects/Appium-Tests/chromedriver");
-        URL url;
+        options.setChromedriverExecutable("/home/ertugrul/IdeaProjects/Mobile-Testing-with-Appium/chromedriver");
 
+        URL url;
         try {
             url = new URL("http://localhost:4723/");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
 
-        driver= new AndroidDriver(url,options);
+        driver = new AndroidDriver(url,options);
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
+
     @AfterEach
-    public void tearDown (){
+    public void tearDown(){
         driver.quit();
     }
 }

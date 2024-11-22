@@ -9,6 +9,7 @@ public class TC03_CalculatorPOM_Test {
 
     @Test
     public void multiplyTest(){
+        // 4 * 5 equals 20
         page.clickSingleDigit(4);
         page.multiplyButton.click();
         page.clickSingleDigit(5);
@@ -16,6 +17,7 @@ public class TC03_CalculatorPOM_Test {
 
         String resultText= page.result.getText();
 
+        // verification
         Assertions.assertEquals(20,Integer.parseInt(resultText));
     }
 }
